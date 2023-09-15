@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { useGetAllDinnerMutation } from "../slices/dinnerApiSlice"
+import { useGetAllDinnerMutation } from "../slices/dinnerApiSlice.js"
 import { Link, useNavigate } from "react-router-dom"
 import { useSelector } from "react-redux"
 import { Card } from "react-bootstrap"

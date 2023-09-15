@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react'
 import { useAddCustomDinnerMutation} from '../slices/dinnerApiSlice.js'
 import {v4 as uuidv4} from 'uuid';
 import {toast} from 'react-toastify'
+import './CustomDinnerScreen.css'
 
 const CustomDinnerScreen = () => {
 

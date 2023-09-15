@@ -18,18 +18,22 @@ const Hero = () => {
   const [time, setTime] = useState(false)
   const [cuisine, setCuisine] = useState(false)
   const [randomDinner, setRandomDinner] = useState({})
-
+  
+  const { userInfo } = useSelector((state) => state.auth)
+  
   const [getAllDinner, { isLoading }] = useGetAllDinnerMutation()
 
-  const { userInfo } = useSelector((state) => state.auth)
+  const initialState = async () => {
+    const allDinner = await getAllDinner()
+    setDinner(allDinner.data)
+  }
+
+  const [dinner, setDinner] = useState(initialState)
 
   const submitHandler = async (e) => {
     e.preventDefault()
 
-    const dinner = await getAllDinner()
-
-    let arr = dinner.data
-
+    let arr = dinner
 
     if (vega){
       arr = arr.filter((d) => d.vega === vega)
@@ -44,20 +48,20 @@ const Hero = () => {
       arr = arr.filter((t) => t.time <= time)
     }
     if( persons){
-      arr = timeCheck.filter((p) => p.persons <= persons)
+      arr = arr.filter((p) => p.persons <= persons)
     }
 
-    let customDinnerCheck
+    let customDinnerCheck = arr
 
       if (ownCustomDinner) {
         // Only Own Custom Dinner
-        customDinnerCheck = personCheck.filter((p) => p.custom === ownCustomDinner && p.User == userInfo.id)
+        customDinnerCheck = arr.filter((p) => p.custom === ownCustomDinner && p.User == userInfo.id)
       } else if (customDinner) {
-        // Only other Custom Dinner
-        customDinnerCheck = personCheck.filter((p) => p.custom === otherCustomDinner && p.User !== userInfo.id)
+        // All custom dinners
+        console.log('all Dinners')
       } else {
         // No custom Dinner
-        customDinnerCheck = personCheck.filter((p) => p.custom === false)
+        customDinnerCheck = arr.filter((p) => p.custom === false)
       }
     
 
@@ -218,7 +222,7 @@ const Hero = () => {
           {randomDinner.name !== undefined ? (
             <>
               <h3 className='mt-3'>{randomDinner.name}</h3>
-              <img className='mt-4' src={randomDinner.imageUrl} alt="This dinner has no image yet" height='300vh'/><br />
+              <img className='mt-4' src={randomDinner.imageUrl} alt="This dinner has no image yet" height='300vh' max-width='100%'/><br />
               <Link to={`/one-dinner/${randomDinner._id}`}>
                 <Button className='mt-4 '>
                   Full Recipe

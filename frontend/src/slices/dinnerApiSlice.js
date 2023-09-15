@@ -1,4 +1,4 @@
-import { apiSlice } from "./apiSlice";
+import { apiSlice } from "./apiSlice.js";
 const DINNERS_URL = '/api/dinners'
 
 export const dinnerApiSlice = apiSlice.injectEndpoints({

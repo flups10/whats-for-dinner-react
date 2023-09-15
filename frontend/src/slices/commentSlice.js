@@ -1,4 +1,4 @@
-import { apiSlice } from "./apiSlice";
+import { apiSlice } from "./apiSlice.js";
 const COMMENTS_URL = '/api/comments'
 
 export const commentApiSlice = apiSlice.injectEndpoints({

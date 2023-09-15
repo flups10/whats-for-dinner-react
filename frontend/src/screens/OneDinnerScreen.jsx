@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useGetOneDinnerMutation, useDeleteDinnerMutation } from "../slices/dinnerApiSlice";
-import { useAddCommentMutation, useDeleteCommentMutation} from '../slices/commentSlice'
+import { useGetOneDinnerMutation, useDeleteDinnerMutation } from "../slices/dinnerApiSlice.js";
+import { useAddCommentMutation, useDeleteCommentMutation} from '../slices/commentSlice.js'
 import { useSelector } from "react-redux";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import Loader from "../components/Loader";
+import Loader from "../components/Loader.jsx";
 import { Button, Form } from "react-bootstrap";
-import FormContainer from "../components/FormContainer";
+import FormContainer from "../components/FormContainer.jsx";
 import { toast } from "react-toastify";
 
 const OneDinnerScreen = () => {
@@ -71,7 +71,7 @@ const OneDinnerScreen = () => {
 
             <>
                 <h3 onClick={()=>{console.log(currentDinner)}}>{currentDinner.name}</h3>
-                <img src={currentDinner.imageUrl} alt="No Image for this dish" height={'300vh'} />
+                <img src={currentDinner.imageUrl} alt="No Image for this dish" height={'300vh'} /><br/>
                 {currentDinner.highProtein ? (<Button className="bg-succes">High Protein</Button>): (null)}
                 {currentDinner.vega ? (<Button className="bg-succes">Vega</Button>): (null)}
 

@@ -12,9 +12,9 @@ import LoginScreen from './screens/LoginScreen.jsx'
 import RegisterScreen from './screens/RegisterScreen.jsx'
 import ProfileScreen from './screens/ProfileScreen.jsx'
 import CustomDinnerScreen from './screens/CustomDinnerScreen.jsx'
-import OneDinnerScreen from './screens/oneDinnerScreen'
-import UpdateDinnerScreen from './screens/UpdateDinnerScreen'
-import UpdateUserScreen from './screens/UpdateUserScreen'
+import OneDinnerScreen from './screens/OneDinnerScreen.jsx'
+import UpdateDinnerScreen from './screens/UpdateDinnerScreen.jsx'
+import UpdateUserScreen from './screens/UpdateUserScreen.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
